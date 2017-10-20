@@ -1,0 +1,179 @@
+@import '../../assets/partials/variables.scss';
+
+.header-wrapper {
+  padding: 34px 0;
+
+  &.logged-in {
+    padding: 34px 50px;
+
+    @media (max-width: 991px) {
+      padding: 30px 20px;
+    }
+
+    @media (max-width: 767px) {
+      padding: 10px 20px;
+    }
+
+    .main-nav {
+
+      .loggedin-menu {
+        float: right;
+      }
+    }
+
+  }
+
+  @media (max-width: 991px) {
+    padding: 30px 20px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+
+  .logo {
+    text-align: left;
+
+    @media (max-width: 991px) {
+      text-align: left;
+    }
+
+    @media (max-width: 767px) {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      img {
+        width: 75%;
+      }
+    }
+  }
+
+  .main-nav {
+    padding-top: 15px;
+
+
+    @media (max-width: 767px) {
+      background-color: mintcream;
+      padding: 5px 14px;
+      overflow: hidden;
+    }
+
+    ul.pre-login-menu {
+      float: right;
+
+      @media (max-width: 767px) {
+        padding: 0;
+        text-align: center;
+      }
+
+      li {
+
+        &.active {
+          a {
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+            background-color: $clinicianScheme;
+          }
+        }
+
+        a {
+          @media (max-width: 767px) {
+            color: white;
+          }
+        }
+      }
+    }
+
+    ul.loggedin-menu {
+
+      a {
+        @media (max-width: 767px) {
+          color: white;
+        }
+      }
+
+      @media (max-width: 991px) {
+        float: right;
+      }
+      .dropdown {
+        a {
+          background-color: inherit;
+          padding: 10px 7px;
+
+          .userId {
+            @media (max-width: 991px) {
+              display: none;
+            }
+          }
+        }
+
+        a:hover {
+          background-color: inherit;
+        }
+      }
+
+      .dropdown-menu {
+        top: 120%;
+        padding: 15px 5px;
+        min-width: 225px;
+        right: 20px;
+        left: auto;
+
+        @media (max-width: 767px) {
+          top: 0;
+          padding: 15px 5px;
+        }
+
+        li {
+          margin-bottom: 7px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          a {
+            color: blue;
+            font-weight: bold;
+
+            img {
+              padding-right: 10px;
+            }
+          }
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: -20px;
+          right: 15px;
+          border: solid 10px transparent;
+          border-bottom-color: gray;
+        }
+      }
+
+      > li + li {
+        margin-left: 1px;
+      }
+
+      > li {
+        &:after {
+          content: "|";
+          color: #999999;
+        }
+
+        &:last-child {
+          &:after {
+            content: none;
+          }
+        }
+      }
+
+      a {
+        display: inline-block;
+      }
+    }
+
+  }
+}
