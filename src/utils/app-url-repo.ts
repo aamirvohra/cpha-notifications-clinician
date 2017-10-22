@@ -24,4 +24,8 @@ export class AppURLRepo {
 
   public static readonly FILTER_ICON: string = AppURLRepo.IMG_URL + '/' + 'filter-icon.png';
 
+  public static readonly SEARCH_ICON: string = AppURLRepo.IMG_URL + '/' + 'search-icon.png';
+
+  public static readonly RESET_ICON: string = AppURLRepo.IMG_URL + '/' + 'reset-icon.png';
+
 }

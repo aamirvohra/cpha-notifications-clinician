@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AppURLRepo } from '../../utils/app-url-repo';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-header',
@@ -20,24 +21,24 @@ export class HeaderComponent implements OnInit {
   constructor( //private modalService: ModalService,
               private router: Router) {
     this.clinicianLogo = AppURLRepo.CLINICIAN_LOGO;
-    // this.profileIcon = AppURLRepo.PROFILE_ICON;
-    // this.dropdownIcon = AppURLRepo.DROPDOWN_ICON;
-    // this.settingIcon = AppURLRepo.SETTINGS_ICON;
-    // this.signoutIcon = AppURLRepo.SIGNOUT_ICON;
+    this.profileIcon = AppURLRepo.PROFILE_ICON;
+    this.dropdownIcon = AppURLRepo.DROPDOWN_ICON;
+    this.settingIcon = AppURLRepo.SETTINGS_ICON;
+    this.signoutIcon = AppURLRepo.SIGNOUT_ICON;
   }
 
   ngOnInit() {
-    // this.router.events.filter(
-    //   event => event instanceof NavigationEnd).subscribe(
-    //   (event: NavigationEnd) => {
-    //     if (event.url !== '/') {
-    //       this.loggedInUser = true;
-    //     }
-    //     else {
-    //       this.loggedInUser = false;
-    //     }
-    //   }
-    // )
+    this.router.events.filter(
+      event => event instanceof NavigationEnd).subscribe(
+      (event: NavigationEnd) => {
+        if (event.url !== '/') {
+          this.loggedInUser = true;
+        }
+        else {
+          this.loggedInUser = false;
+        }
+      }
+    )
 
   }
 
@@ -48,9 +49,9 @@ export class HeaderComponent implements OnInit {
   // displaySignUpForm() {
   //   this.modalService.displaySignUpForm();
   // }
-
-  processLogout() {
-
-  }
+  //
+  // processLogout() {
+  //
+  // }
 
 }

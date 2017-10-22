@@ -8,6 +8,8 @@ import { APP_ROUTES } from './app-routes';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     APP_ROUTES,
     RouterModule,
+    ReactiveFormsModule,
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

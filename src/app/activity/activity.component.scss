@@ -1,0 +1,58 @@
+@import '../../assets/partials/variables.scss';
+
+.activity-wrapper {
+  padding: 30px 50px;
+
+  @media (max-width: 991px) {
+    padding: 30px 20px;
+  }
+
+  > div {
+    margin-bottom: 20px;
+  }
+
+  .actions {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+
+    .action-buttons-row {
+      .btn {
+        padding: 10px 20px;
+      }
+
+
+      .btn-primary {
+        border-color: $clinicianButtonScheme;
+        background-color: $clinicianButtonScheme;
+      }
+
+      > div {
+        display: inline-block;
+        margin-top: 10px;
+        margin-right: 5px;
+        // margin-bottom: 10px;
+
+        button {
+          width: 160px;
+        }
+      }
+    }
+  }
+
+  .filters {
+    label {
+      font-size: 0.857rem;
+      text-transform: uppercase;
+      color: #999999;
+    }
+    .reset-filter {
+      img {
+        display: inline-block;
+      }
+
+      button {
+        padding-left: 0;
+      }
+    }
+  }
+}
