@@ -32,7 +32,7 @@
   }
 
   .logo {
-    text-align: left;
+    text-align: center;
 
     @media (max-width: 991px) {
       text-align: left;
@@ -52,9 +52,8 @@
   .main-nav {
     padding-top: 15px;
 
-
     @media (max-width: 767px) {
-      background-color: mintcream;
+      background-color: $mainNavBGColor;
       padding: 5px 14px;
       overflow: hidden;
     }

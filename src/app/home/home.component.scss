@@ -1,0 +1,93 @@
+@import "../../assets/partials/variables";
+
+
+.home-wrapper {
+  color: white;
+  padding: 100px 150px;
+  background-color: $clinicianScheme;
+
+  @media (max-width: 991px) {
+    padding: 100px 35px;
+    text-align: center;
+  }
+
+  @media (max-width: 767px) {
+    padding: 46px 15px;
+  }
+
+  .title {
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1;
+
+    @media (max-width: 991px) {
+      margin-bottom: 30px;
+      font-size: 4rem;
+    }
+
+    @media (max-width: 767px) {
+      margin-bottom: 36px;
+    }
+  }
+
+  .intro {
+    font-size: 2rem;
+    margin-bottom: 120px;
+    line-height: 1.250;
+
+    @media (max-width: 991px) {
+      margin-bottom: 75px;
+    }
+
+    @media (max-width: 767px) {
+      margin-bottom: 26px;
+    }
+  }
+
+  .content {
+
+    [class*='col-'] {
+      padding-left: 54px;
+      padding-right: 54px;
+
+      @media (max-width: 991px) {
+        margin-bottom: 60px;
+        padding-left: 35px;
+        padding-right: 35px;
+      }
+
+      @media (max-width: 767px) {
+        margin-bottom: 26px;
+      }
+
+      &:last-child {
+        @media (max-width: 991px) {
+          margin-bottom: 0;
+        }
+      }
+
+
+    }
+
+    .section-header {
+      font-size: 2.571rem;
+      padding-top: 20px;
+
+      @media (max-width: 991px) {
+        line-height: 3rem;
+      }
+    }
+
+    p {
+      margin-top: 30px;
+      font-size: 1.429rem;
+
+      @media (max-width: 767px) {
+        margin-top: 36px;
+        text-align: center;
+      }
+    }
+  }
+}
+
