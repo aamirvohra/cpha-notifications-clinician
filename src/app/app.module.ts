@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { ActivityService } from './activity.service';
+import { Daterangepicker } from 'ng2-daterangepicker';
 
 @NgModule({
   declarations: [
@@ -25,8 +27,11 @@ import { BsDropdownModule } from 'ngx-bootstrap';
     RouterModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
+    Daterangepicker
   ],
-  providers: [],
+  providers: [
+    ActivityService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

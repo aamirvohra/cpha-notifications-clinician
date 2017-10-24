@@ -24,6 +24,12 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <hr>
+    </div>
+  </div>
+
   <div class="row filters">
     <form [formGroup]="filterForm">
       <div class="form-group col-md-2">
@@ -45,7 +51,7 @@
 
       <div class="form-group col-md-3">
         <label for="dateRange">Date Range</label>
-        <input type="text" class="form-control" id="dateRange" placeholder="June 29 2017 - October 20 2017" formControlName="dateRange">
+        <input type="text" class="form-control" id="dateRange" daterangepicker >
       </div>
 
       <div class="form-group col-md-2 col-md-offset-2 reset-filter">

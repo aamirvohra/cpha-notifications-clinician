@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppURLRepo } from '../../utils/app-url-repo';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivityService } from '../activity.service';
+import { DaterangepickerConfig } from 'ng2-daterangepicker';
 
 @Component({
   selector: 'app-activity',
@@ -15,7 +16,8 @@ export class ActivityComponent implements OnInit {
   public filterForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private activityService: ActivityService) {
+              private activityService: ActivityService,
+              private dateFilterConfig: DaterangepickerConfig) {
     this.searchIcon = AppURLRepo.SEARCH_ICON;
     this.resetIcon = AppURLRepo.RESET_ICON;
 
@@ -23,7 +25,13 @@ export class ActivityComponent implements OnInit {
       search: [null],
       show: [null],
       dateRange: [null]
-    })
+    });
+
+    this.dateFilterConfig.settings = {
+      ranges : {
+        Today: new Date()
+      }
+    }
   }
 
   ngOnInit() {
