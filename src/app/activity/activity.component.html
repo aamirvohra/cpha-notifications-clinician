@@ -49,9 +49,14 @@
         </select>
       </div>
 
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-3 date-range">
         <label for="dateRange">Date Range</label>
-        <input type="text" class="form-control" id="dateRange" daterangepicker >
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i (click)="displayCalendar()" class="fa fa-calendar"></i>
+          </div>
+          <input #calendar type="text" class="form-control" id="dateRange" daterangepicker>
+        </div>
       </div>
 
       <div class="form-group col-md-2 col-md-offset-2 reset-filter">

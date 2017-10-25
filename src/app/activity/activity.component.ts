@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, ElementRef } from '@angular/core';
 import { AppURLRepo } from '../../utils/app-url-repo';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivityService } from '../activity.service';
-import { DaterangepickerConfig } from 'ng2-daterangepicker';
+import { DaterangepickerConfig, DaterangePickerComponent } from 'ng2-daterangepicker';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-activity',
@@ -14,6 +15,13 @@ export class ActivityComponent implements OnInit {
   public searchIcon: string;
   public resetIcon: string;
   public filterForm: FormGroup;
+
+  @ViewChild(DaterangePickerComponent)
+  private picker: DaterangePickerComponent;
+
+  @ViewChild('calendar')
+  public calendar: ElementRef;
+
 
   constructor(private fb: FormBuilder,
               private activityService: ActivityService,
@@ -29,12 +37,29 @@ export class ActivityComponent implements OnInit {
 
     this.dateFilterConfig.settings = {
       ranges : {
-        Today: new Date()
-      }
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment()],
+        'Last 7 Days': [moment().subtract(7, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(30, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment()],
+        'Last Month': [moment().startOf('month').subtract(1, 'month'), moment().endOf('month').subtract(1, 'month')],
+      },
+      // autoUpdateInput: false
     }
   }
 
   ngOnInit() {
+
+  }
+
+  displayCalendar() {
+    console.log(this.picker.datePicker.isShowing);
+    if(!this.picker.datePicker.isShowing) {
+      this.calendar.nativeElement.focus();
+    }
+    else {
+      this.calendar.nativeElement.blur();
+    }
   }
 
 }

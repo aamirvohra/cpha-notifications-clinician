@@ -57,5 +57,16 @@
         padding-left: 0;
       }
     }
+
+    .date-range {
+      .input-group-addon {
+        background-color: white;
+        border-right: 0;
+      }
+
+      input {
+        border-left: 0;
+      }
+    }
   }
 }
