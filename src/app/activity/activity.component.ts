@@ -22,6 +22,8 @@ export class ActivityComponent implements OnInit {
   @ViewChild('calendar')
   public calendar: ElementRef;
 
+  public activityData: Array<any>;
+
 
   constructor(private fb: FormBuilder,
               private activityService: ActivityService,
@@ -44,16 +46,27 @@ export class ActivityComponent implements OnInit {
         'This Month': [moment().startOf('month'), moment()],
         'Last Month': [moment().startOf('month').subtract(1, 'month'), moment().endOf('month').subtract(1, 'month')],
       },
-      // autoUpdateInput: false
     }
   }
 
   ngOnInit() {
-
+    this.activityService.getData()
+      .map(
+        data => {
+          for ( let activityData of data) {
+            const mmnt = moment(activityData.date, 'YYYY-MM-DD');
+            activityData.date = mmnt.format('MMMM DD, YYYY')
+          }
+          return data;
+        }
+      ).subscribe(
+        data => {
+          this.activityData = data;
+        }
+      );
   }
 
   displayCalendar() {
-    console.log(this.picker.datePicker.isShowing);
     if(!this.picker.datePicker.isShowing) {
       this.calendar.nativeElement.focus();
     }

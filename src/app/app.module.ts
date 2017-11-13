@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
 import { ActivityService } from './activity.service';
 import { Daterangepicker } from 'ng2-daterangepicker';
 
@@ -27,6 +27,7 @@ import { Daterangepicker } from 'ng2-daterangepicker';
     RouterModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
+    PaginationModule.forRoot(),
     Daterangepicker
   ],
   providers: [

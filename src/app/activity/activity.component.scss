@@ -71,4 +71,65 @@
       }
     }
   }
+
+  .activity-table {
+    margin-left: 0;
+    margin-right: 0;
+
+    @media (max-width: 767px) {
+      overflow: scroll;
+      overflow: -moz-scrollbars-horizontal;
+    }
+
+    > div {
+      padding: 0;
+    }
+    // padding: 20px 10px;
+    padding: 0;
+    border: 1px solid $darkGrey;
+    border-radius: 5px;
+    background-color: white;
+
+    .table {
+      // table-layout:fixed;
+
+      //tr th:first-child,
+      //tr th:last-child,
+      //tr td:first-child,
+      //tr td:last-child {
+      //  width: 50px;
+      //  min-width: 50px;
+      //  max-width: 50px;
+      //}
+      //
+      //td {
+      //  word-wrap:break-word;
+      //  word-break:break-all;
+      //}
+    }
+  }
+
+  .paginator {
+    text-align: center;
+
+    /deep/ .pagination {
+      margin: 10px 0;
+      font-size: 1rem;
+
+      li {
+        &.active {
+          a {
+            color: #666666;
+            background-color: #EEEEEE;
+            border-color: #DDDDDD;
+          }
+        }
+
+        a {
+          color: $clinicianButtonScheme;
+        }
+      }
+    }
+
+  }
 }
