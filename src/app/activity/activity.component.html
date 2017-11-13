@@ -55,7 +55,8 @@
           <div class="input-group-addon">
             <i (click)="displayCalendar()" class="fa fa-calendar"></i>
           </div>
-          <input #calendar type="text" class="form-control" id="dateRange" daterangepicker>
+          <input #calendar type="text" class="form-control" id="dateRange" formControlName="dateRange"
+                 (selected)="selectedDate($event, daterange)" daterangepicker>
         </div>
       </div>
 

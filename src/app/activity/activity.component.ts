@@ -34,7 +34,9 @@ export class ActivityComponent implements OnInit {
     this.filterForm = this.fb.group({
       search: [null],
       show: [null],
-      dateRange: [null]
+      startDate: [null],
+      endDate: [null],
+      dateRange: [null],
     });
 
     this.dateFilterConfig.settings = {
@@ -46,6 +48,7 @@ export class ActivityComponent implements OnInit {
         'This Month': [moment().startOf('month'), moment()],
         'Last Month': [moment().startOf('month').subtract(1, 'month'), moment().endOf('month').subtract(1, 'month')],
       },
+      autoUpdateInput: false,
     }
   }
 
@@ -64,6 +67,12 @@ export class ActivityComponent implements OnInit {
           this.activityData = data;
         }
       );
+
+    this.filterForm.valueChanges.subscribe(
+      changes => {
+        console.log(changes);
+      }
+    );
   }
 
   displayCalendar() {
@@ -73,6 +82,16 @@ export class ActivityComponent implements OnInit {
     else {
       this.calendar.nativeElement.blur();
     }
+  }
+
+  public selectedDate(value: any, datepicker?: any) {
+    // set values from here to the form
+    this.filterForm.controls['startDate'].setValue(value.start.format('MMMM DD, YYYY'));
+    this.filterForm.controls['endDate'].setValue(value.end.format('MMMM DD, YYYY'));
+
+    this.filterForm.controls['dateRange'].setValue(
+      this.filterForm.controls['startDate'].value + ' - ' + this.filterForm.controls['endDate'].value
+    );
   }
 
 }
