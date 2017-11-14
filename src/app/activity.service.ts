@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { ActivityQuery } from '../activity-query';
 
 @Injectable()
 export class ActivityService {
@@ -7,8 +9,57 @@ export class ActivityService {
   constructor() { }
 
 
-  public getData() {
-    return Observable.of(this.mockData());
+  public getData(query: ActivityQuery) {
+    return Observable.of(this.mockData())
+      .map(
+        data => {
+          data = this.filterData(data, query);
+          for ( let activityData of data) {
+            const mmnt = moment(activityData.date, 'YYYY-MM-DD');
+            activityData.date = mmnt.format('MMMM DD, YYYY')
+          }
+          return data;
+        }
+      );
+  }
+
+  private filterData(data,query) {
+    if (query.search) {
+      data = this.filterByKeyword(data, query.search);
+    }
+
+    if (query.startDate && query.endDate) {
+      this.filterByDateRange(data, query.startDate, query.endDate);
+    }
+
+    return data;
+  }
+
+  private filterByKeyword(data, keyword) {
+    let filteredData = [];
+    for (let activityData of data) {
+      for(let obj in activityData) {
+        if(activityData[obj].toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
+          filteredData.push(activityData)
+        }
+      }
+    }
+
+    return filteredData;
+  }
+
+  private filterByDateRange(data, startDate, endDate) {
+    let filteredData = [];
+    for (let activityData of data) {
+      for(let obj in activityData) {
+        const mmnt = moment(activityData.date, 'YYYY-MM-DD');
+        const isBtwn = mmnt.isBetween(startDate, endDate);
+
+        if (isBtwn) {
+          console.log(activityData);
+        }
+      }
+    }
   }
 
   private mockData() {

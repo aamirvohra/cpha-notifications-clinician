@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, ElementRef, SimpleChange } from '@angular/core';
 import { AppURLRepo } from '../../utils/app-url-repo';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivityService } from '../activity.service';
 import { DaterangepickerConfig, DaterangePickerComponent } from 'ng2-daterangepicker';
 import * as moment from 'moment';
+import { ActivityQuery } from '../../activity-query';
 
 @Component({
   selector: 'app-activity',
@@ -23,7 +24,10 @@ export class ActivityComponent implements OnInit {
   public calendar: ElementRef;
 
   public activityData: Array<any>;
+  private query: ActivityQuery;
 
+  public noResultsFound: string = 'No results found. Please Search again';
+  public isResultsEmpty: boolean;
 
   constructor(private fb: FormBuilder,
               private activityService: ActivityService,
@@ -39,6 +43,8 @@ export class ActivityComponent implements OnInit {
       dateRange: [null],
     });
 
+    this.query = new ActivityQuery();
+
     this.dateFilterConfig.settings = {
       ranges : {
         'Today': [moment(), moment()],
@@ -53,26 +59,43 @@ export class ActivityComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activityService.getData()
-      .map(
-        data => {
-          for ( let activityData of data) {
-            const mmnt = moment(activityData.date, 'YYYY-MM-DD');
-            activityData.date = mmnt.format('MMMM DD, YYYY')
-          }
-          return data;
-        }
-      ).subscribe(
-        data => {
-          this.activityData = data;
-        }
-      );
+    this.getActivityData();
 
-    this.filterForm.valueChanges.subscribe(
-      changes => {
-        console.log(changes);
+    // this.filterForm.controls['search'].valueChanges.subscribe(
+    //   (search: string) => {
+    //     this.query.search = search;
+    //     this.getActivityData();
+    //   }
+    // );
+
+    this.filterForm.controls['show'].valueChanges.subscribe(
+      (showManufacturers: string) => {
+        this.query.manufacturer = showManufacturers;
+        this.getActivityData();
       }
     );
+
+    this.filterForm.controls['startDate'].valueChanges.subscribe(
+      (startDate: any) => {
+        this.query.startDate = startDate;
+
+        this.query.endDate = this.filterForm.controls['endDate'].value;
+        this.getActivityData();
+      }
+    );
+
+    this.filterForm.controls['endDate'].valueChanges.subscribe(
+      (endDate: any) => {
+        this.query.endDate = endDate;
+        // Since its a day range we dont need to getActivityData on
+        // change for both end date and start date
+      }
+    );
+  }
+
+  public filterBySearchKeyword() {
+    this.query.search = this.filterForm.controls['search'].value;
+    this.getActivityData();
   }
 
   displayCalendar() {
@@ -86,12 +109,33 @@ export class ActivityComponent implements OnInit {
 
   public selectedDate(value: any, datepicker?: any) {
     // set values from here to the form
-    this.filterForm.controls['startDate'].setValue(value.start.format('MMMM DD, YYYY'));
-    this.filterForm.controls['endDate'].setValue(value.end.format('MMMM DD, YYYY'));
+    this.filterForm.controls['endDate'].setValue(value.end);
+    this.filterForm.controls['startDate'].setValue(value.start);
 
     this.filterForm.controls['dateRange'].setValue(
-      this.filterForm.controls['startDate'].value + ' - ' + this.filterForm.controls['endDate'].value
+      value.start.format('MMMM DD, YYYY') + ' - ' + value.end.format('MMMM DD, YYYY')
     );
+  }
+
+  public getActivityData() {
+    this.activityService.getData(this.query)
+      .subscribe(
+        data => {
+          if(data.length) {
+            this.isResultsEmpty = false;
+            this.activityData = data;
+          }
+          else {
+            this.isResultsEmpty = true;
+          }
+        }
+      )
+  }
+
+  public resetFilters() {
+    this.filterForm.reset();
+    this.query = new ActivityQuery();
+    this.getActivityData();
   }
 
 }
