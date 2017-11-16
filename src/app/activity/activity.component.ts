@@ -93,7 +93,7 @@ export class ActivityComponent implements OnInit {
     );
   }
 
-  public filterBySearchKeyword() {
+  public filterBySearchKeyword(event?) {
     this.query.search = this.filterForm.controls['search'].value;
     this.getActivityData();
   }
@@ -132,7 +132,7 @@ export class ActivityComponent implements OnInit {
       )
   }
 
-  public resetFilters() {
+  public resetFilters(event) {
     this.filterForm.reset();
     this.query = new ActivityQuery();
     this.getActivityData();

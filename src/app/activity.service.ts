@@ -29,7 +29,7 @@ export class ActivityService {
     }
 
     if (query.startDate && query.endDate) {
-      this.filterByDateRange(data, query.startDate, query.endDate);
+      data = this.filterByDateRange(data, query.startDate, query.endDate);
     }
 
     return data;
@@ -40,7 +40,8 @@ export class ActivityService {
     for (let activityData of data) {
       for(let obj in activityData) {
         if(activityData[obj].toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
-          filteredData.push(activityData)
+            filteredData.push(activityData);
+            break;
         }
       }
     }
@@ -51,15 +52,15 @@ export class ActivityService {
   private filterByDateRange(data, startDate, endDate) {
     let filteredData = [];
     for (let activityData of data) {
-      for(let obj in activityData) {
-        const mmnt = moment(activityData.date, 'YYYY-MM-DD');
-        const isBtwn = mmnt.isBetween(startDate, endDate);
+      const mmnt = moment(activityData.date, 'YYYY-MM-DD');
+      const isBtwn = mmnt.isBetween(startDate, endDate);
 
-        if (isBtwn) {
-          console.log(activityData);
-        }
+      if (isBtwn) {
+        filteredData.push(activityData);
       }
     }
+
+    return filteredData;
   }
 
   private mockData() {
