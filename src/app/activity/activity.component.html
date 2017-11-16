@@ -56,7 +56,7 @@
             <i (click)="displayCalendar()" class="fa fa-calendar"></i>
           </div>
           <input #calendar type="text" class="form-control" id="dateRange" formControlName="dateRange"
-                 (selected)="selectedDate($event, daterange)" daterangepicker>
+                 (selected)="selectedDate($event, daterange)" (cancelDaterangepicker)="clearDateRange($event)" daterangepicker>
         </div>
       </div>
 

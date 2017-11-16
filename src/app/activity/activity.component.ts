@@ -77,6 +77,7 @@ export class ActivityComponent implements OnInit {
 
     this.filterForm.controls['startDate'].valueChanges.subscribe(
       (startDate: any) => {
+        console.log(startDate);
         this.query.startDate = startDate;
 
         this.query.endDate = this.filterForm.controls['endDate'].value;
@@ -136,6 +137,12 @@ export class ActivityComponent implements OnInit {
     this.filterForm.reset();
     this.query = new ActivityQuery();
     this.getActivityData();
+  }
+
+  public clearDateRange(event) {
+    this.filterForm.controls['dateRange'].setValue(null);
+    this.filterForm.controls['startDate'].setValue(null);
+    this.filterForm.controls['endDate'].setValue(null);
   }
 
 }
