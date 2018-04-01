@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
 import { ActivityService } from './activity.service';
 import { Daterangepicker } from 'ng2-daterangepicker';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { Daterangepicker } from 'ng2-daterangepicker';
     ActivityComponent,
     HeaderComponent,
     FooterComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

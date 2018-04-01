@@ -3,6 +3,20 @@
 .activity-wrapper {
   padding: 30px 50px;
 
+  .title {
+    font-family: 'Montserrat',Regular;
+    font-weight: bold;
+    font-size: 2.143rem;
+    text-transform: uppercase;
+    color:  #000000;
+  }
+
+  .title-description {
+    font-family: 'Montserrat',Regular;
+    font-size: 1.143rem;
+    color: #000000;
+  }
+
   @media (max-width: 991px) {
     padding: 30px 20px;
   }
@@ -50,7 +64,8 @@
     }
     .reset-filter {
       text-align: right;
-      
+      margin-top: 20px;
+
       img {
         display: inline-block;
       }

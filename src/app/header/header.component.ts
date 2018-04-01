@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   public signoutIcon: string;
   public loggedInUser: boolean;
 
-  constructor( //private modalService: ModalService,
+  constructor(// private modalService: ModalService,
               private router: Router) {
     this.clinicianLogo = AppURLRepo.CLINICIAN_LOGO;
     this.profileIcon = AppURLRepo.PROFILE_ICON;

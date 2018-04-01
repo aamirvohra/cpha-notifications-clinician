@@ -1,0 +1,22 @@
+.menu-wrapper {
+  font-family: 'Montserrat';
+  ul {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+  }
+
+  li {
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 0.857rem;
+
+    img {
+      padding-right: 5px;
+    }
+
+    a {
+      color: #666666;
+    }
+  }
+}

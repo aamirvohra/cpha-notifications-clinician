@@ -4,7 +4,7 @@ export class AppURLRepo {
 
   public static readonly IMG_URL: string = AppURLRepo.ASSETS_URL + '/img';
 
-  public static readonly CLINICIAN_LOGO: string = AppURLRepo.IMG_URL + '/' + 'logo-CL.png';
+  public static readonly CLINICIAN_LOGO: string = AppURLRepo.IMG_URL + '/' + 'cps-notifications-logo.png';
 
   public static readonly UPLOAD_IMAGE: string = AppURLRepo.IMG_URL + '/' + 'submit-large-HM-image.png';
 
@@ -27,5 +27,7 @@ export class AppURLRepo {
   public static readonly SEARCH_ICON: string = AppURLRepo.IMG_URL + '/' + 'search-icon.png';
 
   public static readonly RESET_ICON: string = AppURLRepo.IMG_URL + '/' + 'reset-icon.png';
+
+  public static readonly USER_ICON: string = AppURLRepo.IMG_URL + '/' + 'user-icon.png';
 
 }
