@@ -13,6 +13,7 @@ import { BsDropdownModule, PaginationModule } from 'ngx-bootstrap';
 import { ActivityService } from './activity.service';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { MenuComponent } from './menu/menu.component';
+import { SeeMoreComponent } from './see-more/see-more.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MenuComponent } from './menu/menu.component';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
+    SeeMoreComponent,
   ],
   imports: [
     BrowserModule,

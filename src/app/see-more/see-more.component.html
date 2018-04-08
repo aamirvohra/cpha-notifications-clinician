@@ -1,0 +1,6 @@
+<div>
+  <span>{{ isCollapsed ? text.substring(0, charsToDisplayWhenCollapsed) : text }}</span>
+  <a (click)="toggle()">
+    ({{ isCollapsed ? 'more' : 'less' }})
+  </a>
+</div>

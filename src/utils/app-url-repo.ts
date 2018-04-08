@@ -30,4 +30,8 @@ export class AppURLRepo {
 
   public static readonly USER_ICON: string = AppURLRepo.IMG_URL + '/' + 'user-icon.png';
 
+  public static readonly PLUS_ICON: string = AppURLRepo.IMG_URL + '/' + 'plus-open.png';
+
+  public static readonly MINUS_ICON: string = AppURLRepo.IMG_URL + '/' + 'minus-close.png';
+
 }

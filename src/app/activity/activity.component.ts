@@ -5,6 +5,7 @@ import { ActivityService } from '../activity.service';
 import { DaterangepickerConfig, DaterangePickerComponent } from 'ng2-daterangepicker';
 import * as moment from 'moment';
 import { ActivityQuery } from '../../activity-query';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-activity',
@@ -15,6 +16,8 @@ export class ActivityComponent implements OnInit {
 
   public searchIcon: string;
   public resetIcon: string;
+  public plusIcon: string;
+  public minusIcon: string;
   public filterForm: FormGroup;
 
   @ViewChild(DaterangePickerComponent)
@@ -26,7 +29,7 @@ export class ActivityComponent implements OnInit {
   public activityData: Array<any>;
   private query: ActivityQuery;
 
-  public noResultsFound: string = 'No results found. Please Search again';
+  public noResultsFound = 'No results found. Please Search again';
   public isResultsEmpty: boolean;
 
   constructor(private fb: FormBuilder,
@@ -34,6 +37,8 @@ export class ActivityComponent implements OnInit {
               private dateFilterConfig: DaterangepickerConfig) {
     this.searchIcon = AppURLRepo.SEARCH_ICON;
     this.resetIcon = AppURLRepo.RESET_ICON;
+    this.plusIcon = AppURLRepo.PLUS_ICON;
+    this.minusIcon = AppURLRepo.MINUS_ICON;
 
     this.filterForm = this.fb.group({
       search: [null],
@@ -55,7 +60,7 @@ export class ActivityComponent implements OnInit {
         'Last Month': [moment().startOf('month').subtract(1, 'month'), moment().endOf('month').subtract(1, 'month')],
       },
       autoUpdateInput: false,
-    }
+    };
   }
 
   ngOnInit() {
@@ -77,7 +82,6 @@ export class ActivityComponent implements OnInit {
 
     this.filterForm.controls['startDate'].valueChanges.subscribe(
       (startDate: any) => {
-        console.log(startDate);
         this.query.startDate = startDate;
 
         this.query.endDate = this.filterForm.controls['endDate'].value;
@@ -120,17 +124,30 @@ export class ActivityComponent implements OnInit {
 
   public getActivityData() {
     this.activityService.getData(this.query)
+      .map(
+        (activity: Array<any>) => {
+         return activity.map(
+           act => {
+             act.isCollapsed = true;
+
+             return act;
+           }
+         );
+        }
+      )
       .subscribe(
         data => {
-          if(data.length) {
+          if (data.length) {
             this.isResultsEmpty = false;
             this.activityData = data;
+
+            console.log(this.activityData);
           }
           else {
             this.isResultsEmpty = true;
           }
         }
-      )
+      );
   }
 
   public resetFilters(event) {
@@ -143,6 +160,10 @@ export class ActivityComponent implements OnInit {
     this.filterForm.controls['dateRange'].setValue(null);
     this.filterForm.controls['startDate'].setValue(null);
     this.filterForm.controls['endDate'].setValue(null);
+  }
+
+  toggleCollapsed(activity: any, isCollapsed: boolean)  {
+    activity.isCollapsed = isCollapsed;
   }
 
 }

@@ -14,7 +14,7 @@ export class ActivityService {
       .map(
         data => {
           data = this.filterData(data, query);
-          for ( let activityData of data) {
+          for (const activityData of data) {
             const mmnt = moment(activityData.date, 'YYYY-MM-DD');
             activityData.date = mmnt.format('MMMM DD, YYYY')
           }
@@ -23,7 +23,7 @@ export class ActivityService {
       );
   }
 
-  private filterData(data,query) {
+  private filterData(data, query) {
     if (query.search) {
       data = this.filterByKeyword(data, query.search);
     }
@@ -36,10 +36,10 @@ export class ActivityService {
   }
 
   private filterByKeyword(data, keyword) {
-    let filteredData = [];
-    for (let activityData of data) {
-      for(let obj in activityData) {
-        if(activityData[obj].toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
+    const filteredData = [];
+    for (const activityData of data) {
+      for (const obj in activityData) {
+        if (activityData[obj].toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
             filteredData.push(activityData);
             break;
         }
@@ -50,8 +50,8 @@ export class ActivityService {
   }
 
   private filterByDateRange(data, startDate, endDate) {
-    let filteredData = [];
-    for (let activityData of data) {
+    const filteredData = [];
+    for (const activityData of data) {
       const mmnt = moment(activityData.date, 'YYYY-MM-DD');
       const isBtwn = mmnt.isBetween(startDate, endDate);
 
@@ -70,7 +70,8 @@ export class ActivityService {
         manufacturer: 'Jazz Pharmaceuticals',
         drug: 'ERWINASE',
         messageType: 'Shortage',
-        comment: 'Erwinase for Injection - Shortage',
+        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis suscipit lobortis. Aliquam a sem quis arcu finibus vestibulum eget sed leo. In eget lorem non magna dignissim consectetur. Mauris ipsum velit, tristique aliquam est id, tempor vestibulum ante. Sed in rhoncus ipsum, sed consectetur neque. Praesent convallis eget mi et ornare. Nulla fermentum aliquet bibendum. Nulla accumsan quam ut mauris pharetra, in posuere dolor efficitur. Etiam iaculis nulla ut ipsum maximus, nec convallis enim semper. Etiam id faucibus mauris, quis tempus ipsum. ' +
+        'Duis ligula metus, elementum eget neque dictum, posuere elementum libero. Phasellus rhoncus erat quis neque ultricies scelerisque.',
       },
       {
         date: '2017-08-07',
