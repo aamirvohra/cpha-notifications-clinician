@@ -34,4 +34,6 @@ export class AppURLRepo {
 
   public static readonly MINUS_ICON: string = AppURLRepo.IMG_URL + '/' + 'minus-close.png';
 
+  public static readonly CPHA_LOGO: string = AppURLRepo.IMG_URL + '/' + 'cpha-logo.png';
+
 }

@@ -16,7 +16,8 @@ export class SeeMoreComponent implements OnInit {
   @Output()
   isCollapsedEvent: EventEmitter<boolean> = new EventEmitter();
 
-  isCollapsed: boolean;
+  @Input()
+  isCollapsed: boolean = true;
 
   constructor() {
     this.isCollapsed = true;

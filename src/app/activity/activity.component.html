@@ -108,7 +108,7 @@
           </td>
 
           <td>
-            <app-see-more (isCollapsedEvent)="toggleCollapsed(data, $event)" [text]="data.comment" [charsToDisplayWhenCollapsed]="100"></app-see-more>
+            <app-see-more (isCollapsedEvent)="toggleCollapsed(data, $event)" [isCollapsed]="data.isCollapsed" [text]="data.comment" [charsToDisplayWhenCollapsed]="100"></app-see-more>
           </td>
 
           <td class="file">

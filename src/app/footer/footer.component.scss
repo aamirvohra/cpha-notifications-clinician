@@ -1,11 +1,11 @@
 @import "../../assets/partials/variables";
 
 .footer-wrapper {
-  // background-color: #EEEEEE;
-  padding: 20px 50px;
-  border-top: 2px solid $clinicianButtonScheme;
-  font-size: 1rem;
-  color: #000000;
+  font-family: 'Montserrat-Regular';
+  padding: 40px 30px;
+  font-size: 1.143rem;
+  color: white;
+  background-color: gray;
 
   @media (max-width: 991px) {
     padding: 30px 20px;
@@ -21,10 +21,12 @@
 
   .footer-menu {
     margin-bottom: 5px;
+    float: right;
 
     ul {
       li {
         border-right: 1px solid gray;
+        border-right: 1px solid white;
 
         @media (max-width: 767px) {
           display: block;
@@ -47,8 +49,9 @@
         }
 
         a {
-          color: #666666;
           padding: 0 15px;
+          color: white;
+          font-size: 1.143rem;
 
           @media (max-width: 767px) {
             padding: 0;
@@ -71,7 +74,7 @@
   }
 
   .copyright {
-    color: #666666;
-    font-size: 0.95rem;
+    margin-top: 15px;
+    font-size: 0.857rem;
   }
 }

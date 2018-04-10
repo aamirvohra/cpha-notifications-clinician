@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppURLRepo} from '../../utils/app-url-repo';
 
 @Component({
   selector: 'app-footer',
@@ -8,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   private currentYear: number;
+  public cphaLogo: string;
 
   constructor() {
+    this.cphaLogo = AppURLRepo.CPHA_LOGO;
     this.currentYear = new Date().getFullYear();
   }
 

@@ -1,26 +1,31 @@
-<div class="footer-wrapper">
+<section class="footer-wrapper">
   <div class="row">
-    <div class=" col-md-9 footer-content">
+    <div class=" col-md-3 col-sm-12 footer-logo">
+      <img [src]="cphaLogo">
+    </div>
+
+    <div class=" col-md-9 col-sm-12 footer-content">
       <div class="footer-menu">
         <ul class="nav nav-pills">
           <li>
-            <a>About Us</a>
+            <a [routerLink]="['/about']">About Us</a>
           </li>
           <li>
-            <a>Policies and Permissions</a>
+            <a [routerLink]="['/contact']">Contact Us</a>
           </li>
           <li>
-            <a>Privacy Policy</a>
+            <a [routerLink]="['/terms']">Terms and conditions</a>
           </li>
           <li>
-            <a>FAQs</a>
+            <a [routerLink]="['/privacy']">Privacy Policy</a>
           </li>
         </ul>
       </div>
-
-      <div class="copyright">
-        © Canadian Pharmacists Association, {{ currentYear }}. All rights reserved.
-      </div>
     </div>
+
+    <div class="col-sm-12 copyright">
+      © Canadian Pharmacists Association, {{ currentYear }}. All rights reserved.
+    </div>
+
   </div>
-</div>
+</section>
