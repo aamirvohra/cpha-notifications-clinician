@@ -2,10 +2,15 @@
 
 .footer-wrapper {
   font-family: 'Montserrat-Regular';
-  padding: 40px 30px;
-  font-size: 1.143rem;
-  color: white;
-  background-color: gray;
+  padding: 0 50px;
+  background-color: #F5F5F5;
+
+  .content {
+    padding: 30px 40px;
+    font-size: 1.143rem;
+    color: white;
+    background-color: gray;
+  }
 
   @media (max-width: 991px) {
     padding: 30px 20px;
