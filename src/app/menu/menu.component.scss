@@ -1,5 +1,6 @@
 .menu-wrapper {
   font-family: 'Montserrat-Regular';
+
   ul {
     display: flex;
     justify-content: space-around;
@@ -17,6 +18,10 @@
 
     a {
       color: #666666;
+
+      &:hover, &:focus {
+        text-decoration: none;
+      }
     }
   }
 }

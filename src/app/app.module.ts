@@ -14,6 +14,10 @@ import { ActivityService } from './activity.service';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { MenuComponent } from './menu/menu.component';
 import { SeeMoreComponent } from './see-more/see-more.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TandcComponent } from './tandc/tandc.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import { SeeMoreComponent } from './see-more/see-more.component';
     FooterComponent,
     MenuComponent,
     SeeMoreComponent,
+    PrivacyPolicyComponent,
+    TandcComponent,
+    ContactComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

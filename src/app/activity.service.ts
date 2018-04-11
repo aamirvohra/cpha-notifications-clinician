@@ -70,15 +70,14 @@ export class ActivityService {
         manufacturer: 'Jazz Pharmaceuticals',
         drug: 'ERWINASE',
         messageType: 'Shortage',
-        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis suscipit lobortis. Aliquam a sem quis arcu finibus vestibulum eget sed leo. In eget lorem non magna dignissim consectetur. Mauris ipsum velit, tristique aliquam est id, tempor vestibulum ante. Sed in rhoncus ipsum, sed consectetur neque. Praesent convallis eget mi et ornare. Nulla fermentum aliquet bibendum. Nulla accumsan quam ut mauris pharetra, in posuere dolor efficitur. Etiam iaculis nulla ut ipsum maximus, nec convallis enim semper. Etiam id faucibus mauris, quis tempus ipsum. ' +
-        'Duis ligula metus, elementum eget neque dictum, posuere elementum libero. Phasellus rhoncus erat quis neque ultricies scelerisque.',
+        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Health Canada is advising Canadians that Novo Nordisk A/S has updated a voluntary recall of insulin',
       },
       {
         date: '2017-08-07',
         manufacturer: 'Bayer',
         drug: 'RestoraLAX',
         messageType: 'Recall',
-        comment: 'Bayer expand recall of RestoreLAX, sold nationwide, due to potential choking hazard',
+        comment: 'Maecenas mollis suscipit lobortis. Aliquam a sem quis arcu finibus vestibulum eget sed leo. In eget lorem non magna dignissim consectetur. Mauris ipsum velit, tristique aliquam est id, tempor vestibulum ante. Sed in rhoncus ipsum, sed consectetur neque. Praesent convallis eget mi et ornare. Nulla fermentum aliquet bibendum.'
       },
       {
         date: '2017-07-25',
